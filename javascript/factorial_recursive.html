@@ -1,0 +1,23 @@
+<script type="text/javascript">
+// the sum of value of multiply of continuous two numbers
+// input: n
+// output: multiply values from 1 to n
+
+var n1 = 1;
+var n5 = 5;
+var n10 = 10;
+
+var fact = function(n) {
+    if (n <= 1) {
+        return 1;
+    }
+
+    return n * fact(n - 1);
+};
+
+function main() {
+    console.log("n => " + n1 + "! : " + fact(n1));
+    console.log("n => " + n5 + "! : " + fact(n5));
+    console.log("n => " + n10 + "! : " + fact(n10));
+}
+</script>

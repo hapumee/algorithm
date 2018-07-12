@@ -1,0 +1,35 @@
+<script type="text/javascript">
+// Hanoi
+// Input: the numner of disks (n)
+//      source pillar (source_position
+//      destination pillar (dest_position)
+//      auxiliary pillar (aux_position)
+// Output: the order of moving from source_destination to dest_position
+var hanoi = function(n, source_position, dest_position, aux_position) {
+    // ending condition
+    if (n == 1) {
+        console.log(source_position + "->" + dest_position);
+        return;
+    }
+
+    // moving the (n-1) number of disks from source_position to aux_position
+    hanoi(n - 1, source_position, aux_position, dest_position);
+
+    // moving the largest disk (nth disk) from source_position to dest_position
+    console.log(source_position + "->" + dest_position);
+
+    // moving the (n-1) number of disks from aux_position to dest_position
+    hanoi(n - 1, aux_position, dest_position, source_position);
+};
+
+function main() {
+    console.log("n = 1");
+    hanoi(1, 1, 3, 2);
+
+    console.log("n = 2");
+    hanoi(2, 1, 3, 2);
+
+    console.log("n = 3");
+    hanoi(3, 1, 3, 2);
+}
+</script>

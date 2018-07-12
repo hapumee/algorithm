@@ -1,0 +1,24 @@
+<script type="text/javascript">
+// find the index of minimum number
+// input: list that contains n numbers
+// output: find the index of minimum number in the input list
+
+var list = [17, 92, 18, 33, 58, 7, 33, 42];
+
+var find_min_idx = function(arr) {
+    var n = arr.length;
+    var min_idx = 0;
+
+    for (var i = 0; i < n - 1; i++) {
+        if (arr[i] < arr[min_idx]) {
+            min_idx = i;
+        }
+    }
+
+    return min_idx;
+};
+
+function main() {
+    console.log(find_min_idx(list)); // 5
+}
+</script>

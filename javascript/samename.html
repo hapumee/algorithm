@@ -1,0 +1,28 @@
+<script type="text/javascript">
+// find the same names that shows up more than two times in the given list
+// input: the list that contains n number of the same names
+// output: the set of the same names
+
+var list = ["Tom", "Jerry", "Mike", "Tom"];
+var list2 = ["Tom", "Jerry", "Mike", "Tom", "Mike"];
+
+var find_same_name = function(arr) {
+    var n = arr.length;
+    var result = [];
+
+    for (var i = 0; i < n; i++) {
+        for (var j = i + 1; j <= n; j++) {
+            if (arr[i] == arr[j]) {
+                result.push(arr[i]);
+            }
+        }
+    }
+
+    return result;
+};
+
+function main() {
+    console.log(find_same_name(list));
+    console.log(find_same_name(list2));
+}
+</script>

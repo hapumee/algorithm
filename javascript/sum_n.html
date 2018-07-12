@@ -1,0 +1,22 @@
+<script type="text/javascript">
+// sum from 1 to n
+// input: n
+// output: sum from 1 to n
+
+let sum_n = function(n) {
+    var sum = n;
+
+    if (n < 1) {
+        return 0;
+    }
+
+    sum = sum + sum_n(n - 1);
+
+    return sum;
+};
+
+function main() {
+    console.log(sum_n(10));
+    console.log(sum_n(100));
+}
+</script>

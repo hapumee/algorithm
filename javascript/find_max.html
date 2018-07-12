@@ -1,0 +1,47 @@
+<script type="text/javascript">
+// find the maximum number
+// input: list that contains n numbers
+// output: find the maximum number in the input list
+
+let list = [17, 92, 18, 33, 58, 7, 33, 42];
+
+let find_max = function(n) {
+//    console.log(n);
+    var max_v = list[n];
+
+    if (n < 0) {
+        return;
+    }
+
+    var comparator = find_max(n - 1);
+
+    if (max_v < comparator) {
+        max_v = comparator;
+    }
+
+//    console.log(n +" : " + max_v, comparator);
+    return max_v;
+};
+
+// list: the list (array)
+// n: count
+let find_max2 = function(list, n) {
+    if (n == 1) {
+        return list[0];
+    }
+
+    var max_n_1 = find_max2(list, n - 1);
+
+    if (max_n_1 > list[n - 1]) {
+        return max_n_1;
+    } else {
+        return list[n - 1];
+    }
+};
+
+function main() {
+//    console.log(list.length - 1);
+    console.log(find_max(list.length - 1)); // 92
+    console.log(find_max2(list, list.length));
+}
+</script>
