@@ -1,0 +1,53 @@
+<script type="text/javascript">
+/**
+ * Make an ordered list from the smallest number to the largest number
+ *
+ * Input: the list
+ * Output: the ordered list
+ */
+
+var merge_sort = function (list) {
+    // if the length of input list is less than 1,
+    // it is not needed to sort
+    if (list.length === 1) {
+        return list;
+    }
+
+    // divide two groups and sort them respectively
+    var mid = Math.round(list.length / 2);
+
+    var group1 = merge_sort(list.slice(0, mid));
+    var group2 = merge_sort(list.slice(mid, list.length));
+
+    // merge two groups
+    var result = [];
+
+    while (group1.length > 0 && group2.length > 0) {
+        if (group1[0] < group2[0]) {
+            result.push(group1.splice(0, 1)[0]);
+        } else {
+            result.push(group2.splice(0, 1)[0]);
+        }
+    }
+
+    // if there are elements which are remained in 'group1', combine 'group1' to 'result'
+    if (group1.length > 0) {
+        result = result.concat(group1);
+    }
+
+    // if there are elements which are remained in 'group2', combine 'group2' to 'result'
+    if (group2.length > 0) {
+        result = result.concat(group2);
+    }
+
+    return result;
+};
+
+function main () {
+    var list1 = [35, 9, 2, 85, 17]; // [문제]의 예
+    console.log(merge_sort(list1)); // [2, 9, 17, 35, 85]
+
+    var list2 = [38, 27, 43, 3, 9, 82., 10]; // [그림 1]의 예
+    console.log(merge_sort(list2)); // [3, 9, 10, 27, 38, 43, 82]
+}
+</script>

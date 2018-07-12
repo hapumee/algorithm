@@ -1,0 +1,27 @@
+<script type="text/javascript">
+/**
+ * Find the position(index) of specific element from the list
+ *
+ * Input: the list
+ * Output: index of the element
+ */
+
+var input_list = [17, 92, 18, 33, 58, 5, 33, 42];
+
+var search_index = function (list, element) {
+    for (var i = 0; i < list.length; i++) {
+        if (element == list[i]) {
+            return i;
+        }
+    }
+
+    return -1;
+};
+
+function main() {
+    // example 1
+    console.log(search_index(input_list, 33)); // 3
+    // example 2
+    console.log(search_index(input_list, 900)); // -1
+}
+</script>

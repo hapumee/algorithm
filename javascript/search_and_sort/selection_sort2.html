@@ -1,0 +1,33 @@
+<script type="text/javascript">
+/**
+ * Make an ordered list from the smallest number to the largest number
+ *
+ * Input: the list
+ * Output: the ordered list
+ */
+
+var list = [35, 9, 2, 85, 17]; // Input list
+
+var selection_sort = function (list) {
+    for (var i = 0; i < list.length; i++) {
+        var min_index = i;
+
+        // find index of the minimum number
+        for (var j = i + 1; j < list.length; j++) {
+            if (list[j] < list[min_index]) {
+                min_index = j;
+            }
+        }
+
+        // swap the two numbers
+        var temp_value = list[i];
+        list[i] = list[min_index];
+        list[min_index] = temp_value;
+    }
+};
+
+function main() {
+    selection_sort(list);
+    console.log(list); // [2, 9, 17, 35, 85]
+}
+</script>

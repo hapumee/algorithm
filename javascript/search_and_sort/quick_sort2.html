@@ -1,0 +1,73 @@
+<script type="text/javascript">
+/**
+ * Make an ordered list from the smallest number to the largest number
+ *
+ * Input: the list
+ * Output: the ordered list
+ */
+
+var quick_sort = function (list) {
+    _quick_sort(list, 0, list.length - 1);
+};
+
+var _quick_sort = function (list, start, end) {
+    if (start > end) {
+        return list;
+    }
+
+    // proper position to set pivot value
+    var position = get_pivot_position(list, start, end);
+
+    // divide two groups based on pivot value and sort those two groups respectively
+    _quick_sort(list, start, position - 1);
+    _quick_sort(list, position + 1, end);
+};
+
+var get_pivot_position = function (list, start, end) {
+    var pivot = list[end]; // assume that the last element is pivot value
+    var leftmark = start;
+    var rightmark = end - 1;
+    var is_stop = false; // if this parameter is true, it is found the right position of pivot
+
+    while (!is_stop) {
+        // if the value of index 'leftmark' is less then pivot,
+        // move to the next value
+        while (leftmark <= rightmark && list[leftmark] <= pivot) {
+            debugger;
+            leftmark++;
+        }
+
+        // if the value of index 'rightmark' is greater then pivot,
+        // move to the previous value
+        while (leftmark <= rightmark && list[rightmark] >= pivot) {
+            rightmark--;
+        }
+
+        if (leftmark > rightmark) {
+            is_stop = true;
+        } else {
+            // swap the value of index 'lefrmark' and the value of index 'rightmark'
+            var temp = list[leftmark];
+            list[leftmark] = list[rightmark];
+            list[rightmark] = temp;
+        }
+    }
+
+    // swap the value and pivot
+    var temp = list[leftmark];
+    list[leftmark] = pivot;
+    list[end] = temp;
+
+    return leftmark;
+};
+
+function main () {
+    var list1 = [35, 9, 2, 85, 17];
+    quick_sort(list1);
+    console.log(list1); // [2, 9, 17, 35, 85]
+
+    var list2 = [54, 26, 93, 17, 77, 31, 44, 55, 20];
+    quick_sort(list2);
+    console.log(list2); // [17, 20, 26, 31, 44, 54, 55, 77, 93]
+}
+</script>

@@ -1,0 +1,33 @@
+<script type="text/javascript">
+/**
+ * Make an ordered list from the smallest number to the largest number
+ *
+ * Input: the list
+ * Output: the ordered list
+ */
+
+var list = [35, 9, 2, 85, 17]; // Input list
+
+// insert the target value which is on the specific index
+var insertion_sort = function (list) {
+    for (var i = 0; i < list.length; i++) {
+        var insertion_index = i;
+        var target_value = list[i];
+
+        for (var j = i - 1; j >= 0; j--) {
+            if (list[j] > target_value) {
+                insertion_index = j;
+            }
+        }
+
+        // insert the target value on j position
+        list.splice(insertion_index, 0, target_value);
+        list.splice(i + 1, 1);
+    }
+};
+
+function main () {
+    insertion_sort(list);
+    console.log(list); // [2, 9, 17, 35, 85]
+}
+</script>

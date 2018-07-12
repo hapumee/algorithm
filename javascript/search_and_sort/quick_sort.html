@@ -1,0 +1,41 @@
+<script type="text/javascript">
+/**
+ * Make an ordered list from the smallest number to the largest number
+ *
+ * Input: the list
+ * Output: the ordered list
+ */
+
+var quick_sort = function (list) {
+    // if the length of input list is less than 1,
+    // it is not needed to sort
+    if (list.length <= 1) {
+        return list;
+    }
+
+    // pivot
+    var pivot = list[list.length - 1];
+
+    // divide two groups
+    var group1 = []; // the numbers less than pivot
+    var group2 = []; // the numbers greater then pivot
+
+    for (var i = 0; i < list.length - 1; i++) {
+        if (list[i] < pivot) {
+            group1.push(list[i]);
+        } else {
+            group2.push(list[i]);
+        }
+    }
+
+    return quick_sort(group1).concat([pivot]).concat(quick_sort(group2));
+};
+
+function main () {
+    var list1 = [35, 9, 2, 85, 17];
+    console.log(quick_sort(list1)); // [2, 9, 17, 35, 85]
+
+    var list2 = [54, 26, 93, 17, 77, 31, 44, 55, 20]; // [17, 20, 26, 31, 44, 54, 55, 77, 93]
+    console.log(quick_sort(list2));
+}
+</script>

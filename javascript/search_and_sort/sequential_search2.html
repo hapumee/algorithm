@@ -1,0 +1,31 @@
+<script type="text/javascript">
+/**
+ * Find the student's name by student's number using sequential search
+ *
+ * Input: the list of student's numbers
+ *        the list of student's names
+ * Output: student's name
+ */
+
+var student_number = [39, 14, 67, 105];
+var student_name = ['Justin', 'John', 'Mike', 'Summer'];
+
+var search_name = function (no_list, name_list, no) {
+    for (var i = 0; i < student_number.length; i++) {
+        if (no == student_number[i]) {
+            return student_name[i];
+        }
+    }
+
+    return '?'; // if there is no student who doesn't match with any number, return question mark
+};
+
+function main() {
+    // example 1
+    console.log(search_name(student_number, student_name, 14)); // John
+    // example 2
+    console.log(search_name(student_number, student_name, 105)); // Summer
+    // example 3
+    console.log(search_name(student_number, student_name, 90)); // ?
+}
+</script>
