@@ -1,0 +1,97 @@
+<html>
+<head>
+<script type="text/javascript">
+const candidates = ['Michael', 'Jim', 'Michael', 'Jim', 'Casandra', 'Joe', 'Jim', 'Michael', 'Marry', 'Joe'];
+// formattedCandidate = [
+    // {name: 'Marry', count: 1},
+    // {name: 'Michael', count: 3},
+    // {name: 'Jim', count: 3}, // winner!
+    // {name: 'Casandra', count: 1},
+    // {name: 'Joe', count: 2}
+// ];
+
+let formattedCandidate = {};
+let computedVotes = [];
+
+const getWinner = () => {
+    // count the vote for candidates
+    countVote(formattedCandidate);
+    console.log("countVote:", formattedCandidate);
+    
+    // reverse the vote for candidates
+    let reversedCandidate = reverseCountVote(formattedCandidate);
+    console.log("reverseObject:", reversedCandidate);
+
+    // choose the highest votes and sort the names,
+    // and the winner
+    let highestCountVote = getHighestCountVote(reversedCandidate);
+    console.log("getHighestCountVote:", highestCountVote);
+
+    let winner = chooseWinner(highestCountVote);
+    console.log("chooseWinner:", winner);
+
+    return winner;
+}
+
+const countVote = (countedCandidate, index) => {
+    if (!index) {
+        index = 0;
+    }
+    
+    if (index == candidates.length) {
+        return countedCandidate;
+    }
+
+    let name = candidates[index];
+
+    if (!!countedCandidate[name]) {
+        countedCandidate[name] = (parseInt(countedCandidate[name], 10) + 1) + '';
+    } else {
+        countedCandidate[name] = '1';
+    }
+
+    countVote(countedCandidate, index + 1);
+}
+
+const reverseCountVote = (inputObject) => {
+    let keys = Object.keys(inputObject);
+    let reverseObject = {};
+
+    for (let i = 0; i < keys.length; ++i) {
+        let new_value = inputObject[keys[i]];
+
+        if (!!reverseObject[new_value]) {
+            reverseObject[new_value].push(keys[i]);
+        } else {
+            reverseObject[new_value] = [keys[i]];
+        }
+    }
+    
+    return reverseObject;
+}
+
+const getHighestCountVote = (adjustCandidate) => {
+    let votes = Object.keys(adjustCandidate);
+    let highestVote = 0;
+
+    for (let i = 0; i < votes.length; i++) {
+        if (votes[i] > highestVote) {
+            highestVote = votes[i];
+        }
+    }
+    
+    return adjustCandidate[highestVote];
+}
+
+const chooseWinner = (highestVote) => {
+    let soredCandidate = highestVote.sort();
+
+    return soredCandidate[0];
+}
+
+console.log("The Winner is ", getWinner(), "!!");
+</script>
+</head>
+<body>
+</body>
+</html>
