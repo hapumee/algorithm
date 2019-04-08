@@ -1,8 +1,19 @@
 <html>
 <head>
 <script type="text/javascript">
+/**
+ * A question is like below.
+ *
+ * There are candidates.
+ * Get the winner from these candidates.
+ * 
+ * 1) Data for candidates is an array with names.
+ * 2) Set the count for the same name.
+ * 3) The winner is the candidate who get the highest number of votes.
+ * 4) If there are candidates who get the same score, the front person is winner in alphabetically order.
+ **/
 const candidates = ['Michael', 'Jim', 'Michael', 'Jim', 'Casandra', 'Joe', 'Jim', 'Michael', 'Marry', 'Joe'];
-// formattedCandidate = [
+// const fomattedCandidate = [
     // {name: 'Marry', count: 1},
     // {name: 'Michael', count: 3},
     // {name: 'Jim', count: 3}, // winner!
