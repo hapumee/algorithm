@@ -1,0 +1,82 @@
+<html>
+<head>
+<script type="text/javascript">
+/**
+ * Question :
+ *
+ * Given a struct array of type Height, having two elements feet and inches. Find the maximum height, where height is calculated sum of feet and inches after converting feet into inches.
+ *
+ * Input:
+ * First line of input contains number of testcases. For each testcase, first line of input contains N, number of given heights. Next line contains 2*N number of elements (feet and inches for each N).
+ * 
+ * Output:
+ * Output maximum height from array.
+ * 
+ * Your Task: Your task is to only complete the function of find maximum height from given array.
+ * 
+ * [My Information] 1 foot = 12 Inches
+ *
+ * Constraints:
+ * 1<=T<=100
+ * 1<=N<=105
+ * 0<=Feet, Inches<=105
+ * 
+ * Example:
+ * Input:
+ * 2
+ * 2
+ * 1 2 2 1
+ * 4
+ * 3 5 7 9 5 6 5 5
+ * Output:
+ * 25
+ * 93
+ * 
+ * Explanation:
+ * Testcase 1: (1, 2) and (2, 1) are respective given heights. After converting both heigths in to inches, we get 14 and 25 as respective heights. So, 25 is the maximum height.
+ **/
+const input1 = [1, 2, 2, 1];
+const input2 = [3, 5, 7, 9, 5, 6, 5, 5];
+const divider = 2;
+
+const findMaxHeight = (heights) => {
+    let adjustHeight = [];
+    let maxHeight = 0;
+
+    // calculate heights
+    for (let i = 0; i < heights.length - 1; i = i + 2) {
+        let inches = calculateInches(heights[i], heights[i + 1]);
+        adjustHeight.push(inches);
+    }
+    
+    // find max height from adjusted heights array
+    maxHeight = getMaxHeight(adjustHeight);
+
+    return maxHeight;
+}
+
+const calculateInches = (feet, inch) => {
+    return feet * 12 + inch;
+}
+
+const getMaxHeight = (heights) => {
+    // console.log(heights);
+
+    let maxHeight = 0;
+
+    for (let i = 0; i < heights.length; i++) {
+        if (heights[i] > maxHeight) {
+            maxHeight = heights[i];
+        }
+    }
+
+    return maxHeight;
+}
+
+console.log(findMaxHeight(input1));
+console.log(findMaxHeight(input2));
+</script>
+</head>
+<body>
+</body>
+</html>
